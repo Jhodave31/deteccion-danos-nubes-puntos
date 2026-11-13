@@ -27,7 +27,7 @@ corrigieron además la orientación y la escala de las nubes). El informe comple
 | `runs/` | Métricas, registros de entrenamiento y predicciones de cada corrida (los pesos `.pt` están en la *Release*) |
 | `demo/` | Aplicación web local que segmenta una nube y muestra el daño en 3D (`Iniciar_Demo.bat`) |
 | `entrega_final/` | Informe en LaTeX (plantilla elsarticle) y sus figuras |
-| `presentacion/` | Presentación de la sustentación (`.pptx`) y su generador |
+| `presentacion/` | Presentación de la sustentación (`.pptx`) y su generador (`build_deck.js`, con pptxgenjs) |
 
 ## Instalación
 
