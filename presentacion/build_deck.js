@@ -332,8 +332,8 @@ feats.forEach(([h, t], i) => {
   s.addText(h, { x: 9.35, y, w: 3.4, h: 0.45, fontSize: 18, bold: true, color: C.text1, isTextBox: true, margin: 0 });
   s.addText(t, { x: 9.35, y: y + 0.45, w: 3.4, h: 0.5, fontSize: 14, color: C.text2, isTextBox: true, margin: 0 });
 });
-s.addText("Python (servidor) + three.js (visor 3D) · reutiliza el mismo código del experimento",
-  { x: 8.6, y: 6.55, w: 4.2, h: 0.4, fontSize: 12, italic: true, color: C.accent5, isTextBox: true, margin: 0 });
+s.addText("Código, notebooks y modelos: github.com/Jhodave31/deteccion-danos-nubes-puntos",
+  { x: 8.6, y: 6.45, w: 4.2, h: 0.5, fontSize: 12, italic: true, color: C.accent5, isTextBox: true, margin: 0 });
 s.addNotes("Como es una materia de ingeniería de software, construí una aplicación. Uno elige una nube, presiona analizar y ve en 3D las casas dañadas en rojo. Reutiliza exactamente el mismo código del experimento. Ahora la muestro en vivo.");
 
 // ================= 13. Conclusiones =================
