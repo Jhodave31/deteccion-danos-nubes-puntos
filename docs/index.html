@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Detector de daños 3D</title>
+<meta name="description" content="Detección de daños estructurales en nubes de puntos de dron (3DAeroRelief) con PTv3 + Utonia.">
+<style>
+  :root {
+    --bg: #0f1216; --panel: #171b21; --panel2: #1f242c; --line: #2c333d;
+    --text: #e8ebef; --muted: #9aa4b1; --accent: #e6194b; --ok: #2fbf71;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; overflow-x: hidden; background: var(--bg); color: var(--text);
+    font: 14px/1.45 "Segoe UI", system-ui, sans-serif; }
+  #app { display: grid; grid-template-columns: 340px 1fr; height: 100vh; }
+  aside { background: var(--panel); border-right: 1px solid var(--line); overflow-y: auto; padding: 18px 18px 24px; }
+  h1 { font-size: 18px; margin: 0 0 2px; letter-spacing: .2px; }
+  .sub { color: var(--muted); font-size: 12.5px; margin-bottom: 16px; }
+  .card { background: var(--panel2); border: 1px solid var(--line); border-radius: 10px; padding: 12px; margin-bottom: 12px; }
+  .card h2 { font-size: 12px; text-transform: uppercase; letter-spacing: .8px; color: var(--muted); margin: 0 0 10px; font-weight: 600; }
+  select, button, input[type=file] { width: 100%; font: inherit; color: var(--text); }
+  select { background: #12161b; border: 1px solid var(--line); border-radius: 8px; padding: 8px; }
+  button { background: var(--accent); border: 0; border-radius: 8px; padding: 10px; font-weight: 600; cursor: pointer; margin-top: 10px; }
+  button:disabled { opacity: .5; cursor: wait; }
+  .row { display: flex; align-items: center; gap: 8px; margin-top: 10px; color: var(--muted); font-size: 13px; }
+  .row input[type=checkbox] { accent-color: var(--accent); }
+  .upload { display: block; margin-top: 10px; padding: 9px; border: 1px dashed var(--line); border-radius: 8px;
+    text-align: center; color: var(--muted); cursor: pointer; font-size: 13px; }
+  .upload input { display: none; }
+  .seg { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; }
+  .seg button { margin: 0; padding: 7px 4px; background: #12161b; border: 1px solid var(--line); font-weight: 500; font-size: 12.5px; }
+  .seg button.on { background: var(--accent); border-color: var(--accent); }
+  .seg button:disabled { opacity: .35; cursor: not-allowed; }
+  .legend div, .bar { display: flex; align-items: center; gap: 8px; margin: 5px 0; font-size: 13px; }
+  .sw { width: 12px; height: 12px; border-radius: 3px; flex: none; border: 1px solid #0006; }
+  .bar .name { width: 128px; flex: none; }
+  .bar .track { flex: 1; height: 8px; background: #12161b; border-radius: 4px; overflow: hidden; }
+  .bar .fill { height: 100%; }
+  .bar .val { width: 44px; text-align: right; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .big { display: flex; gap: 10px; }
+  .big div { flex: 1; background: #12161b; border-radius: 8px; padding: 8px 10px; }
+  .big b { display: block; font-size: 22px; font-variant-numeric: tabular-nums; }
+  .big span { color: var(--muted); font-size: 12px; }
+  .meta { color: var(--muted); font-size: 12px; margin-top: 8px; }
+  main { position: relative; overflow: hidden; min-width: 0; }
+  main canvas { position: absolute; inset: 0; display: block; }
+  @media (max-width: 760px) {
+    #app { grid-template-columns: 1fr; grid-template-rows: 62vh auto; height: auto; }
+    main { order: -1; }
+    aside { border-right: 0; border-bottom: 1px solid var(--line); }
+  }
+  #overlay { position: absolute; inset: 0; display: grid; place-items: center; background: #0f1216cc; font-size: 15px; }
+  #overlay.hidden { display: none; }
+  .spinner { width: 34px; height: 34px; border: 3px solid var(--line); border-top-color: var(--accent); border-radius: 50%;
+    animation: spin 1s linear infinite; margin: 0 auto 12px; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  #hint { position: absolute; left: 14px; bottom: 12px; color: var(--muted); font-size: 12px; pointer-events: none; }
+  #title { position: absolute; left: 14px; top: 12px; font-size: 15px; font-weight: 600; text-shadow: 0 1px 3px #000; }
+  input[type=range] { width: 100%; accent-color: var(--accent); }
+  .err { color: #ff8a8a; }
+</style>
+<script type="importmap">{ "imports": { "three": "./three.module.min.js" } }</script>
+</head>
+<body>
+<div id="app">
+  <aside>
+    <h1>Detector de daños estructurales</h1>
+    <div class="sub">Nubes de puntos de dron · post-huracán · <span id="model">cargando modelo…</span></div>
+
+    <div class="card">
+      <h2>1. Elegir nube de puntos</h2>
+      <select id="examples"></select>
+      <label class="upload" style="display:none"><input id="file" type="file" accept=".ply">o subir un archivo .ply propio</label>
+      <div class="row" style="display:none"><input id="tta" type="checkbox"><label for="tta">Mayor precisión (8 vistas, más lento)</label></div>
+      <button id="go">Ver análisis</button>
+      <div class="meta">Versión web: muestra los análisis que el modelo ya hizo sobre las 8 nubes de prueba (Área 2), que nunca vio al entrenar. La demo completa, que analiza nubes nuevas, se ejecuta localmente (ver repositorio).</div>
+    </div>
+
+    <div class="card">
+      <h2>2. Vista</h2>
+      <div class="seg" id="modes">
+        <button data-m="pred" class="on">Modelo</button>
+        <button data-m="rgb">Color</button>
+        <button data-m="label">Real</button>
+        <button data-m="err">Errores</button>
+      </div>
+      <div class="row" style="margin-top:12px">Tamaño de punto</div>
+      <input id="size" type="range" min="1" max="8" step="0.5" value="2.5">
+      <div class="legend" id="legend" style="margin-top:8px"></div>
+    </div>
+
+    <div class="card" id="results" hidden>
+      <h2>3. Resultado</h2>
+      <div class="big">
+        <div><b id="dmg">–</b><span>de lo edificado está dañado</span></div>
+        <div id="accbox"><b id="acc">–</b><span>acierto vs. etiqueta real</span></div>
+      </div>
+      <div id="bars" style="margin-top:12px"></div>
+      <div class="meta" id="meta"></div>
+    </div>
+    <div class="meta">Proyecto Electiva de Ingeniería de Software · Universidad de San Buenaventura Cali · Dataset 3DAeroRelief (huracán Ian, 2022) · <a href="https://github.com/Jhodave31/deteccion-danos-nubes-puntos" style="color:inherit">código en GitHub</a>.</div>
+  </aside>
+  <main id="view">
+    <div id="title"></div>
+    <div id="hint">Arrastrar: rotar · Rueda o pellizcar: zoom · Clic derecho o dos dedos: mover</div>
+    <div id="overlay"><div><div class="spinner"></div><div id="msg">Cargando…</div></div></div>
+  </main>
+</div>
+
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from './OrbitControls.js';
+
+const $ = (id) => document.getElementById(id);
+const view = $('view');
+const renderer = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true });
+renderer.setPixelRatio(window.devicePixelRatio);
+renderer.setClearColor(0x0f1216);
+view.prepend(renderer.domElement);
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 1, 0.1, 5000);
+camera.up.set(0, 0, 1);
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true;
+
+function resize() {
+  const r = view.getBoundingClientRect();
+  renderer.setSize(r.width, r.height);
+  camera.aspect = r.width / r.height;
+  camera.updateProjectionMatrix();
+}
+new ResizeObserver(resize).observe(view);
+resize();
+(function loop() { requestAnimationFrame(loop); controls.update(); renderer.render(scene, camera); })();
+window.demoRender = () => { controls.update(); renderer.render(scene, camera); };  // dibuja un cuadro bajo demanda (capturas)
+
+let CLASSES = [], data = null, points = null, mode = 'pred';
+const dec = (b64, T) => { const s = atob(b64); const u = new Uint8Array(s.length);
+  for (let i = 0; i < s.length; i++) u[i] = s.charCodeAt(i); return new T(u.buffer); };
+
+function overlay(msg) { $('msg').textContent = msg || ''; $('overlay').classList.toggle('hidden', !msg); }
+
+function legend() {
+  const L = $('legend');
+  if (mode === 'err') {
+    L.innerHTML = `<div><span class="sw" style="background:#d9d9d9"></span>Acierto</div><div><span class="sw" style="background:#e6194b"></span>Error</div>`;
+  } else if (mode === 'rgb') {
+    L.innerHTML = `<div style="color:var(--muted)">Color real capturado por el dron</div>`;
+  } else {
+    L.innerHTML = CLASSES.map(c => `<div><span class="sw" style="background:rgb(${c.color})"></span>${c.name}</div>`).join('');
+  }
+}
+
+function colorize() {
+  if (!points) return;
+  const n = data.n, col = points.geometry.attributes.color.array;
+  for (let i = 0; i < n; i++) {
+    let r, g, b;
+    if (mode === 'rgb') { r = data.rgb[3 * i]; g = data.rgb[3 * i + 1]; b = data.rgb[3 * i + 2]; }
+    else if (mode === 'err') { const ok = data.pred[i] === data.label[i]; [r, g, b] = ok ? [217, 217, 217] : [230, 25, 75]; }
+    else { [r, g, b] = CLASSES[(mode === 'label' ? data.label : data.pred)[i]].color; }
+    col[3 * i] = r / 255; col[3 * i + 1] = g / 255; col[3 * i + 2] = b / 255;
+  }
+  points.geometry.attributes.color.needsUpdate = true;
+  legend();
+}
+
+function show(res) {
+  const xyz = dec(res.xyz, Float32Array);
+  data = { n: xyz.length / 3, rgb: dec(res.rgb, Uint8Array), pred: dec(res.pred, Uint8Array),
+           label: res.label ? dec(res.label, Uint8Array) : null };
+  if (points) { scene.remove(points); points.geometry.dispose(); }
+  const geo = new THREE.BufferGeometry();
+  geo.setAttribute('position', new THREE.BufferAttribute(xyz, 3));
+  geo.setAttribute('color', new THREE.BufferAttribute(new Float32Array(xyz.length), 3));
+  geo.computeBoundingSphere();
+  points = new THREE.Points(geo, new THREE.PointsMaterial({ size: +$('size').value * 0.03, vertexColors: true }));
+  scene.add(points);
+  const s = geo.boundingSphere;
+  controls.target.copy(s.center);
+  camera.position.set(s.center.x - s.radius * 0.9, s.center.y - s.radius * 1.1, s.center.z + s.radius * 1.2);
+  camera.near = s.radius / 100; camera.far = s.radius * 20; camera.updateProjectionMatrix();
+  controls.update();
+  document.querySelectorAll('#modes button').forEach(b => {
+    b.disabled = (b.dataset.m === 'label' || b.dataset.m === 'err') && !data.label;
+  });
+  if (!data.label && (mode === 'label' || mode === 'err')) setMode('pred'); else colorize();
+
+  const S = res.summary;
+  $('results').hidden = false;
+  $('dmg').textContent = S.damage_ratio.toFixed(0) + ' %';
+  $('accbox').style.display = S.accuracy !== undefined ? '' : 'none';
+  if (S.accuracy !== undefined) $('acc').textContent = (100 * S.accuracy).toFixed(0) + ' %';
+  $('bars').innerHTML = S.classes.map(c => `<div class="bar"><span class="sw" style="background:rgb(${c.color})"></span>
+    <span class="name">${c.name}</span><span class="track"><span class="fill" style="display:block;width:${c.percent}%;background:rgb(${c.color})"></span></span>
+    <span class="val">${c.percent.toFixed(1)}%</span></div>`).join('');
+  $('meta').textContent = `${res.model} · ${res.n_raw.toLocaleString('es')} puntos originales → ${res.n_vox.toLocaleString('es')} analizados` +
+    ` · preprocesamiento ${res.t_pre} s · modelo ${res.t_pred} s${res.tta ? ' (8 vistas)' : ''}`;
+  $('title').textContent = res.name;
+}
+
+function setMode(m) {
+  mode = m;
+  document.querySelectorAll('#modes button').forEach(b => b.classList.toggle('on', b.dataset.m === m));
+  colorize();
+}
+document.querySelectorAll('#modes button').forEach(b => b.onclick = () => !b.disabled && setMode(b.dataset.m));
+$('size').oninput = () => { if (points) points.material.size = +$('size').value * 0.03; };
+
+async function run(fetcher, label) {
+  $('go').disabled = true;
+  overlay(`Analizando ${label}… (preprocesamiento + modelo)`);
+  try {
+    const r = await fetcher();
+    const res = await r.json();
+    if (res.error) throw new Error(res.error);
+    overlay('Dibujando…');
+    await new Promise((r) => setTimeout(r, 30));  // deja pintar el mensaje sin depender de requestAnimationFrame
+    show(res);
+    overlay(null);
+  } catch (e) {
+    overlay(null);
+    $('results').hidden = false;
+    $('bars').innerHTML = `<div class="err">Error: ${e.message}</div>`;
+  } finally { $('go').disabled = false; }
+}
+
+$('go').onclick = () => {
+  const id = $('examples').value, tta = $('tta').checked ? 1 : 0;
+  run(() => fetch(`datos/${id.replace('/', '_')}.json`), id.replace('Area_', 'Área ').replace('/', ' / '));
+};
+$('file').onchange = () => {
+  const f = $('file').files[0]; if (!f) return;
+  const tta = $('tta').checked ? 1 : 0;
+  run(() => fetch(`/api/upload?name=${encodeURIComponent(f.name)}&tta=${tta}`, { method: 'POST', body: f }), f.name);
+  $('file').value = '';
+};
+
+const info = await (await fetch('info.json')).json();
+CLASSES = info.classes;
+$('model').textContent = 'modelo: ' + info.model;
+$('examples').innerHTML = info.examples.map(e => `<option value="${e.id}">${e.label}</option>`).join('');
+const first = info.examples.find(e => e.id === 'Area_2/pp6') || info.examples[0];
+if (first) $('examples').value = first.id;
+legend();
+overlay(null);
+if (first) $('go').click();
+</script>
+</body>
+</html>

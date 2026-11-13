@@ -57,6 +57,9 @@ División (oficial del benchmark): entrenamiento Áreas 1 y 3–7 · validación
 
 ## Demo
 
+**Versión web (funciona en el celular):** <https://jhodave31.github.io/deteccion-danos-nubes-puntos/>. Muestra los análisis ya hechos por el modelo PTv3 + Utonia sobre las 8 nubes de prueba (carpeta `docs/`).
+
+**Versión completa (local):** 
 `Iniciar_Demo.bat` (o `python demo/app.py`) abre `http://localhost:8000`: elegir una nube o subir un `.ply`,
 presionar **Analizar** y ver la predicción en 3D (vistas: modelo, color, etiqueta real y errores). El modelo se
 configura en `demo/config.json`.

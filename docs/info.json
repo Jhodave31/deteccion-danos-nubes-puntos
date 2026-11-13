@@ -1,0 +1,88 @@
+{
+ "model": "PTv3 + Utonia (semilla 2)",
+ "run": "utonia_tiny_s2",
+ "examples": [
+  {
+   "id": "Area_2/pp1",
+   "label": "Área 2 / pp1 (prueba) — acierto 55 %",
+   "test": true
+  },
+  {
+   "id": "Area_2/pp2",
+   "label": "Área 2 / pp2 (prueba) — acierto 76 %",
+   "test": true
+  },
+  {
+   "id": "Area_2/pp3",
+   "label": "Área 2 / pp3 (prueba) — acierto 78 %",
+   "test": true
+  },
+  {
+   "id": "Area_2/pp4",
+   "label": "Área 2 / pp4 (prueba) — acierto 79 %",
+   "test": true
+  },
+  {
+   "id": "Area_2/pp5",
+   "label": "Área 2 / pp5 (prueba) — acierto 67 %",
+   "test": true
+  },
+  {
+   "id": "Area_2/pp6",
+   "label": "Área 2 / pp6 (prueba) — acierto 82 %",
+   "test": true
+  },
+  {
+   "id": "Area_2/pp7",
+   "label": "Área 2 / pp7 (prueba) — acierto 94 %",
+   "test": true
+  },
+  {
+   "id": "Area_2/pp8",
+   "label": "Área 2 / pp8 (prueba) — acierto 95 %",
+   "test": true
+  }
+ ],
+ "classes": [
+  {
+   "name": "Fondo",
+   "color": [
+    135,
+    135,
+    135
+   ]
+  },
+  {
+   "name": "Edificación dañada",
+   "color": [
+    230,
+    25,
+    75
+   ]
+  },
+  {
+   "name": "Edificación sin daño",
+   "color": [
+    70,
+    240,
+    240
+   ]
+  },
+  {
+   "name": "Vía",
+   "color": [
+    255,
+    225,
+    25
+   ]
+  },
+  {
+   "name": "Árbol",
+   "color": [
+    0,
+    128,
+    0
+   ]
+  }
+ ]
+}
