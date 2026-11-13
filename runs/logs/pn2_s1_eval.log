@@ -1,0 +1,10 @@
+Area_2_pp1 {'n_vox': 280209, 'acc_vox': 0.655, 'n_full': 549174, 'acc_full': 0.6513}
+Area_2_pp2 {'n_vox': 212459, 'acc_vox': 0.7161, 'n_full': 687165, 'acc_full': 0.7207}
+Area_2_pp3 {'n_vox': 273202, 'acc_vox': 0.734, 'n_full': 578050, 'acc_full': 0.7165}
+Area_2_pp4 {'n_vox': 203815, 'acc_vox': 0.8104, 'n_full': 12584549, 'acc_full': 0.8851}
+Area_2_pp5 {'n_vox': 217575, 'acc_vox': 0.589, 'n_full': 3556371, 'acc_full': 0.6916}
+Area_2_pp6 {'n_vox': 242403, 'acc_vox': 0.4869, 'n_full': 5019852, 'acc_full': 0.5321}
+Area_2_pp7 {'n_vox': 124852, 'acc_vox': 0.7739, 'n_full': 4402543, 'acc_full': 0.7605}
+Area_2_pp8 {'n_vox': 103595, 'acc_vox': 0.7488, 'n_full': 3554129, 'acc_full': 0.6906}
+[voxel] mIoU=0.4518 OA=0.6765 mAcc=0.6268 mF1=0.5791 IoU= {'Background': np.float64(0.6466), 'Building-Damage': np.float64(0.4306), 'Building-No-Damage': np.float64(0.4504), 'Road': np.float64(0.0337), 'Tree': np.float64(0.6974)}
+[full] mIoU=0.4339 OA=0.7545 mAcc=0.6028 mF1=0.5325 IoU= {'Background': np.float64(0.8328), 'Building-Damage': np.float64(0.5826), 'Building-No-Damage': np.float64(0.1269), 'Road': np.float64(0.0177), 'Tree': np.float64(0.6095)}

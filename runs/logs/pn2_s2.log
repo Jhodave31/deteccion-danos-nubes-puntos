@@ -1,0 +1,44 @@
+nubes: train=50 val=6 test=8
+frecuencias: {'Background': np.float64(0.3985), 'Building-Damage': np.float64(0.2138), 'Building-No-Damage': np.float64(0.1503), 'Road': np.float64(0.0626), 'Tree': np.float64(0.1749)} pesos: [0.623 0.85  1.014 1.572 0.94 ]
+{"epoch": 1, "loss": 1.3156, "train_acc": 0.458, "lr": 0.0005, "time_min": 2.6233}
+{"epoch": 2, "loss": 1.0001, "train_acc": 0.6004, "lr": 0.001, "time_min": 5.1265}
+{"epoch": 3, "loss": 0.8731, "train_acc": 0.6589, "lr": 0.001, "time_min": 7.6215}
+{"epoch": 4, "loss": 0.7784, "train_acc": 0.6944, "lr": 0.001, "time_min": 10.0975, "val_mIoU": 0.4048, "val_OA": 0.5366}
+{"epoch": 5, "loss": 0.7246, "train_acc": 0.7166, "lr": 0.001, "time_min": 12.8828}
+{"epoch": 6, "loss": 0.6841, "train_acc": 0.734, "lr": 0.001, "time_min": 15.3641}
+{"epoch": 7, "loss": 0.6596, "train_acc": 0.7403, "lr": 0.001, "time_min": 17.9202}
+{"epoch": 8, "loss": 0.6121, "train_acc": 0.762, "lr": 0.0009, "time_min": 20.4498, "val_mIoU": 0.4724, "val_OA": 0.6515}
+{"epoch": 9, "loss": 0.5822, "train_acc": 0.7741, "lr": 0.0009, "time_min": 23.3423}
+{"epoch": 10, "loss": 0.5702, "train_acc": 0.7806, "lr": 0.0009, "time_min": 25.8822}
+{"epoch": 11, "loss": 0.5461, "train_acc": 0.7895, "lr": 0.0009, "time_min": 28.438}
+{"epoch": 12, "loss": 0.5294, "train_acc": 0.797, "lr": 0.0008, "time_min": 30.9004, "val_mIoU": 0.4992, "val_OA": 0.6938}
+{"epoch": 13, "loss": 0.499, "train_acc": 0.8078, "lr": 0.0008, "time_min": 33.5775}
+{"epoch": 14, "loss": 0.4846, "train_acc": 0.8137, "lr": 0.0008, "time_min": 35.9718}
+{"epoch": 15, "loss": 0.4691, "train_acc": 0.8168, "lr": 0.0007, "time_min": 38.3788}
+{"epoch": 16, "loss": 0.4499, "train_acc": 0.8267, "lr": 0.0007, "time_min": 40.7769, "val_mIoU": 0.5162, "val_OA": 0.6814}
+{"epoch": 17, "loss": 0.4387, "train_acc": 0.8307, "lr": 0.0007, "time_min": 43.501}
+{"epoch": 18, "loss": 0.4224, "train_acc": 0.8368, "lr": 0.0006, "time_min": 45.8859}
+{"epoch": 19, "loss": 0.4101, "train_acc": 0.84, "lr": 0.0006, "time_min": 48.2884}
+{"epoch": 20, "loss": 0.4049, "train_acc": 0.8447, "lr": 0.0005, "time_min": 50.6871, "val_mIoU": 0.4989, "val_OA": 0.6608}
+{"epoch": 21, "loss": 0.3856, "train_acc": 0.8514, "lr": 0.0005, "time_min": 53.3983}
+{"epoch": 22, "loss": 0.3615, "train_acc": 0.859, "lr": 0.0005, "time_min": 55.7918}
+{"epoch": 23, "loss": 0.3524, "train_acc": 0.8629, "lr": 0.0004, "time_min": 58.1787}
+{"epoch": 24, "loss": 0.3364, "train_acc": 0.87, "lr": 0.0004, "time_min": 60.5824, "val_mIoU": 0.5023, "val_OA": 0.661}
+{"epoch": 25, "loss": 0.3408, "train_acc": 0.8672, "lr": 0.0003, "time_min": 63.3123}
+{"epoch": 26, "loss": 0.3225, "train_acc": 0.8746, "lr": 0.0003, "time_min": 65.7054}
+{"epoch": 27, "loss": 0.3151, "train_acc": 0.8781, "lr": 0.0003, "time_min": 68.1051}
+{"epoch": 28, "loss": 0.2972, "train_acc": 0.883, "lr": 0.0002, "time_min": 70.2722, "val_mIoU": 0.5096, "val_OA": 0.6799}
+{"epoch": 29, "loss": 0.2956, "train_acc": 0.8846, "lr": 0.0002, "time_min": 72.6079}
+{"epoch": 30, "loss": 0.2852, "train_acc": 0.8875, "lr": 0.0002, "time_min": 74.6541}
+{"epoch": 31, "loss": 0.2853, "train_acc": 0.8883, "lr": 0.0001, "time_min": 76.6968}
+{"epoch": 32, "loss": 0.2762, "train_acc": 0.8925, "lr": 0.0001, "time_min": 78.7427, "val_mIoU": 0.5031, "val_OA": 0.6749}
+{"epoch": 33, "loss": 0.2707, "train_acc": 0.8934, "lr": 0.0001, "time_min": 81.1546}
+{"epoch": 34, "loss": 0.2591, "train_acc": 0.8974, "lr": 0.0001, "time_min": 83.3479}
+{"epoch": 35, "loss": 0.2578, "train_acc": 0.8979, "lr": 0.0, "time_min": 85.4798}
+{"epoch": 36, "loss": 0.2558, "train_acc": 0.8991, "lr": 0.0, "time_min": 87.5706, "val_mIoU": 0.5061, "val_OA": 0.672}
+{"epoch": 37, "loss": 0.2548, "train_acc": 0.8996, "lr": 0.0, "time_min": 89.901}
+{"epoch": 38, "loss": 0.2513, "train_acc": 0.9006, "lr": 0.0, "time_min": 91.9545}
+{"epoch": 39, "loss": 0.2507, "train_acc": 0.9013, "lr": 0.0, "time_min": 94.0008}
+{"epoch": 40, "loss": 0.2498, "train_acc": 0.9011, "lr": 0.0, "time_min": 96.0464, "val_mIoU": 0.5032, "val_OA": 0.6705}
+TEST: {"OA": 0.6555916073119396, "mIoU": 0.4451139372250982, "mAcc": 0.6415464378238755, "mF1": 0.5805521495059933}
+IoU por clase: {'Background': np.float64(0.6443), 'Building-Damage': np.float64(0.4135), 'Building-No-Damage': np.float64(0.3927), 'Road': np.float64(0.0818), 'Tree': np.float64(0.6933)}

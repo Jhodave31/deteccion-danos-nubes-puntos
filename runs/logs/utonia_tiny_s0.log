@@ -1,0 +1,39 @@
+modelo=utonia_tiny parámetros=9.5M escala=0.1 grilla=0.01
+C:\Users\jhoda\.venvs\electiva\Lib\site-packages\point_transformer_v3\modules.py:126: UserWarning: layer_norm falls back to torch's slower kernel on CUDA (triton unavailable: triton is not installed; it ships with torch's CUDA wheels (reinstall torch with CUDA, e.g. `uv sync` without the cpu extra)). Fix the Triton toolchain for the fast path.
+  return self.act(self.norm(x))
+C:\Users\jhoda\.venvs\electiva\Lib\site-packages\point_transformer_v3\modules.py:148: UserWarning: subm_conv3d k=3 on cuda:0 falls back to the slow torch backend (triton unavailable: triton is not installed; it ships with torch's CUDA wheels (reinstall torch with CUDA, e.g. `uv sync` without the cpu extra)); the triton backend is 2-5x faster on CUDA. Fix the Triton toolchain for the fast path.
+  return self.norm(self.proj(self.conv(x, grid)))
+C:\Users\jhoda\.venvs\electiva\Lib\site-packages\point_transformer_v3\modules.py:148: UserWarning: layer_norm falls back to torch's slower kernel on CUDA (triton unavailable: triton is not installed; it ships with torch's CUDA wheels (reinstall torch with CUDA, e.g. `uv sync` without the cpu extra)). Fix the Triton toolchain for the fast path.
+  return self.norm(self.proj(self.conv(x, grid)))
+{"epoch": 1, "loss": 0.9614, "train_acc": 0.625, "time_min": 1.9621, "mem_gb": 4.0432}
+{"epoch": 2, "loss": 0.8759, "train_acc": 0.6438, "time_min": 3.609, "mem_gb": 4.0432}
+{"epoch": 3, "loss": 0.7874, "train_acc": 0.6817, "time_min": 5.3099, "mem_gb": 4.0432, "val_mIoU": 0.3925, "val_OA": 0.5416}
+{"epoch": 4, "loss": 0.7584, "train_acc": 0.6915, "time_min": 7.1756, "mem_gb": 4.0432}
+{"epoch": 5, "loss": 0.708, "train_acc": 0.7231, "time_min": 8.8503, "mem_gb": 4.0714}
+{"epoch": 6, "loss": 0.6903, "train_acc": 0.727, "time_min": 10.5514, "mem_gb": 4.0714, "val_mIoU": 0.4563, "val_OA": 0.566}
+{"epoch": 7, "loss": 0.6332, "train_acc": 0.7567, "time_min": 12.5154, "mem_gb": 4.3055}
+{"epoch": 8, "loss": 0.6187, "train_acc": 0.753, "time_min": 14.1192, "mem_gb": 4.3055}
+{"epoch": 9, "loss": 0.5989, "train_acc": 0.7685, "time_min": 15.7926, "mem_gb": 4.3055, "val_mIoU": 0.5316, "val_OA": 0.6823}
+{"epoch": 10, "loss": 0.5657, "train_acc": 0.789, "time_min": 17.7891, "mem_gb": 4.3055}
+{"epoch": 11, "loss": 0.5462, "train_acc": 0.7912, "time_min": 19.4986, "mem_gb": 4.3055}
+{"epoch": 12, "loss": 0.5295, "train_acc": 0.7958, "time_min": 21.0757, "mem_gb": 4.3055, "val_mIoU": 0.412, "val_OA": 0.5368}
+{"epoch": 13, "loss": 0.484, "train_acc": 0.8177, "time_min": 23.0028, "mem_gb": 4.3055}
+{"epoch": 14, "loss": 0.4782, "train_acc": 0.8196, "time_min": 24.689, "mem_gb": 4.3055}
+{"epoch": 15, "loss": 0.4675, "train_acc": 0.8194, "time_min": 26.3156, "mem_gb": 4.3055, "val_mIoU": 0.4634, "val_OA": 0.6149}
+{"epoch": 16, "loss": 0.4339, "train_acc": 0.8383, "time_min": 28.16, "mem_gb": 4.3055}
+{"epoch": 17, "loss": 0.4257, "train_acc": 0.838, "time_min": 29.8567, "mem_gb": 4.3055}
+{"epoch": 18, "loss": 0.3941, "train_acc": 0.8543, "time_min": 31.5104, "mem_gb": 4.3055, "val_mIoU": 0.528, "val_OA": 0.6726}
+{"epoch": 19, "loss": 0.3714, "train_acc": 0.8586, "time_min": 33.3372, "mem_gb": 4.3055}
+{"epoch": 20, "loss": 0.3645, "train_acc": 0.866, "time_min": 34.97, "mem_gb": 4.3055}
+{"epoch": 21, "loss": 0.3339, "train_acc": 0.8754, "time_min": 36.6197, "mem_gb": 4.3055, "val_mIoU": 0.4545, "val_OA": 0.5935}
+{"epoch": 22, "loss": 0.3235, "train_acc": 0.8816, "time_min": 38.4433, "mem_gb": 4.3055}
+{"epoch": 23, "loss": 0.3053, "train_acc": 0.8872, "time_min": 40.0865, "mem_gb": 4.3055}
+{"epoch": 24, "loss": 0.2855, "train_acc": 0.8931, "time_min": 41.7385, "mem_gb": 4.3055, "val_mIoU": 0.4913, "val_OA": 0.6262}
+{"epoch": 25, "loss": 0.2873, "train_acc": 0.89, "time_min": 43.5917, "mem_gb": 4.3055}
+{"epoch": 26, "loss": 0.2789, "train_acc": 0.8947, "time_min": 45.2524, "mem_gb": 4.3055}
+{"epoch": 27, "loss": 0.2738, "train_acc": 0.8938, "time_min": 46.8943, "mem_gb": 4.3055, "val_mIoU": 0.5173, "val_OA": 0.6704}
+{"epoch": 28, "loss": 0.2675, "train_acc": 0.9004, "time_min": 48.7778, "mem_gb": 4.3055}
+{"epoch": 29, "loss": 0.2731, "train_acc": 0.8978, "time_min": 50.4773, "mem_gb": 4.3055}
+{"epoch": 30, "loss": 0.2672, "train_acc": 0.8981, "time_min": 52.0598, "mem_gb": 4.3055, "val_mIoU": 0.5154, "val_OA": 0.6661}
+TEST: {"OA": 0.7866, "mIoU": 0.5656, "mAcc": 0.7657, "mF1": 0.6872} IoU: {'Background': np.float64(0.6829), 'Building-Damage': np.float64(0.659), 'Building-No-Damage': np.float64(0.5861), 'Road': np.float64(0.1201), 'Tree': np.float64(0.78)}
+TEST_TTA: {"OA": 0.7778, "mIoU": 0.5604, "mAcc": 0.7654, "mF1": 0.6842} IoU: {'Background': np.float64(0.6914), 'Building-Damage': np.float64(0.6363), 'Building-No-Damage': np.float64(0.5582), 'Road': np.float64(0.1288), 'Tree': np.float64(0.7873)}

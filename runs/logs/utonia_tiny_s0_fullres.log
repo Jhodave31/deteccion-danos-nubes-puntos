@@ -1,0 +1,9 @@
+Area_2_pp1 549174
+Area_2_pp2 687165
+Area_2_pp3 578050
+Area_2_pp4 12584549
+Area_2_pp5 3556371
+Area_2_pp6 5019852
+Area_2_pp7 4402543
+Area_2_pp8 3554129
+[fullres] mIoU=0.5769 OA=0.8638 mAcc=0.7307 mF1=0.6996 {'Background': np.float64(0.8117), 'Building-Damage': np.float64(0.783), 'Building-No-Damage': np.float64(0.3439), 'Road': np.float64(0.2353), 'Tree': np.float64(0.7107)}

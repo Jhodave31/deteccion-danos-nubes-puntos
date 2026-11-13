@@ -1,0 +1,22 @@
+# Dataset (≈21 GB): se descarga de https://github.com/BinaLab/3DAeroRelief
+data/*
+!data/scale.json
+!data/processed/
+data/processed/*
+!data/processed/stats.json
+
+# Modelos entrenados: se publican como Release del repositorio
+*.pt
+
+# Archivos generados o locales
+demo/cache/
+demo/snapshot.png
+presentacion/qa/
+entrega_final/main.log
+**/__pycache__/
+.ipynb_checkpoints/
+.claude/
+Entrega/
+entrega2/
+LEEME_PRIMERO.md
+presentacion/apply_theme.js

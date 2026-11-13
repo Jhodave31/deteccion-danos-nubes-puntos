@@ -1,0 +1,46 @@
+nubes: train=50 val=6 test=8
+frecuencias: {'Background': np.float64(0.3985), 'Building-Damage': np.float64(0.2138), 'Building-No-Damage': np.float64(0.1503), 'Road': np.float64(0.0626), 'Tree': np.float64(0.1749)} pesos: [0.623 0.85  1.014 1.572 0.94 ]
+C:\Users\jhoda\Documents\Proyecto_Electiva_Danos_Estructurales\code\train.py:235: UserWarning: Detected call of `lr_scheduler.step()` before `optimizer.step()`. In PyTorch 1.1.0 and later, you should call them in the opposite order: `optimizer.step()` before `lr_scheduler.step()`.  Failure to do this will result in PyTorch skipping the first value of the learning rate schedule. See more details at https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate
+  sched.step()
+{"epoch": 1, "loss": 1.2876, "train_acc": 0.4783, "lr": 0.0005, "time_min": 2.6094}
+{"epoch": 2, "loss": 0.9733, "train_acc": 0.6133, "lr": 0.001, "time_min": 4.8861}
+{"epoch": 3, "loss": 0.8563, "train_acc": 0.662, "lr": 0.001, "time_min": 7.1893}
+{"epoch": 4, "loss": 0.7677, "train_acc": 0.698, "lr": 0.001, "time_min": 9.3044, "val_mIoU": 0.4396, "val_OA": 0.6575}
+{"epoch": 5, "loss": 0.714, "train_acc": 0.7182, "lr": 0.001, "time_min": 11.7564}
+{"epoch": 6, "loss": 0.6722, "train_acc": 0.737, "lr": 0.001, "time_min": 13.9331}
+{"epoch": 7, "loss": 0.6259, "train_acc": 0.7564, "lr": 0.001, "time_min": 19.3844}
+{"epoch": 8, "loss": 0.6131, "train_acc": 0.7652, "lr": 0.0009, "time_min": 49.7654, "val_mIoU": 0.4471, "val_OA": 0.6416}
+{"epoch": 9, "loss": 0.5903, "train_acc": 0.7721, "lr": 0.0009, "time_min": 59.2804}
+{"epoch": 10, "loss": 0.5719, "train_acc": 0.7792, "lr": 0.0009, "time_min": 92.8222}
+{"epoch": 11, "loss": 0.5421, "train_acc": 0.7925, "lr": 0.0009, "time_min": 94.8131}
+{"epoch": 12, "loss": 0.5235, "train_acc": 0.7984, "lr": 0.0008, "time_min": 96.8079, "val_mIoU": 0.532, "val_OA": 0.7214}
+{"epoch": 13, "loss": 0.5118, "train_acc": 0.8023, "lr": 0.0008, "time_min": 99.1628}
+{"epoch": 14, "loss": 0.4857, "train_acc": 0.8137, "lr": 0.0008, "time_min": 101.2391}
+{"epoch": 15, "loss": 0.48, "train_acc": 0.8149, "lr": 0.0007, "time_min": 103.2382}
+{"epoch": 16, "loss": 0.4446, "train_acc": 0.8294, "lr": 0.0007, "time_min": 105.273, "val_mIoU": 0.5033, "val_OA": 0.6582}
+{"epoch": 17, "loss": 0.4359, "train_acc": 0.8328, "lr": 0.0007, "time_min": 107.5873}
+{"epoch": 18, "loss": 0.4328, "train_acc": 0.8328, "lr": 0.0006, "time_min": 109.6185}
+{"epoch": 19, "loss": 0.4116, "train_acc": 0.842, "lr": 0.0006, "time_min": 111.6565}
+{"epoch": 20, "loss": 0.388, "train_acc": 0.8499, "lr": 0.0005, "time_min": 113.6939, "val_mIoU": 0.4369, "val_OA": 0.6036}
+{"epoch": 21, "loss": 0.382, "train_acc": 0.8556, "lr": 0.0005, "time_min": 115.9686}
+{"epoch": 22, "loss": 0.3731, "train_acc": 0.8567, "lr": 0.0005, "time_min": 117.9596}
+{"epoch": 23, "loss": 0.3658, "train_acc": 0.858, "lr": 0.0004, "time_min": 120.0005}
+{"epoch": 24, "loss": 0.3428, "train_acc": 0.8675, "lr": 0.0004, "time_min": 122.0849, "val_mIoU": 0.4721, "val_OA": 0.639}
+{"epoch": 25, "loss": 0.3223, "train_acc": 0.8756, "lr": 0.0003, "time_min": 124.5056}
+{"epoch": 26, "loss": 0.323, "train_acc": 0.8751, "lr": 0.0003, "time_min": 126.6359}
+{"epoch": 27, "loss": 0.3055, "train_acc": 0.8801, "lr": 0.0003, "time_min": 128.8168}
+{"epoch": 28, "loss": 0.3002, "train_acc": 0.8835, "lr": 0.0002, "time_min": 130.9032, "val_mIoU": 0.4908, "val_OA": 0.6497}
+{"epoch": 29, "loss": 0.2874, "train_acc": 0.888, "lr": 0.0002, "time_min": 133.339}
+{"epoch": 30, "loss": 0.2819, "train_acc": 0.8899, "lr": 0.0002, "time_min": 135.4843}
+{"epoch": 31, "loss": 0.2777, "train_acc": 0.8911, "lr": 0.0001, "time_min": 137.7923}
+{"epoch": 32, "loss": 0.2757, "train_acc": 0.8924, "lr": 0.0001, "time_min": 140.0971, "val_mIoU": 0.4917, "val_OA": 0.6545}
+{"epoch": 33, "loss": 0.2619, "train_acc": 0.8975, "lr": 0.0001, "time_min": 142.664}
+{"epoch": 34, "loss": 0.2551, "train_acc": 0.9001, "lr": 0.0001, "time_min": 144.9739}
+{"epoch": 35, "loss": 0.2535, "train_acc": 0.9, "lr": 0.0, "time_min": 147.2023}
+{"epoch": 36, "loss": 0.2508, "train_acc": 0.9014, "lr": 0.0, "time_min": 149.3687, "val_mIoU": 0.492, "val_OA": 0.6612}
+{"epoch": 37, "loss": 0.2516, "train_acc": 0.9005, "lr": 0.0, "time_min": 151.8301}
+{"epoch": 38, "loss": 0.249, "train_acc": 0.9017, "lr": 0.0, "time_min": 154.0688}
+{"epoch": 39, "loss": 0.2522, "train_acc": 0.9013, "lr": 0.0, "time_min": 156.4823}
+{"epoch": 40, "loss": 0.2451, "train_acc": 0.9032, "lr": 0.0, "time_min": 158.7288, "val_mIoU": 0.4861, "val_OA": 0.6531}
+TEST: {"OA": 0.675273654944485, "mIoU": 0.4499201366090214, "mAcc": 0.6211622435390514, "mF1": 0.576893938763045}
+IoU por clase: {'Background': np.float64(0.6439), 'Building-Damage': np.float64(0.431), 'Building-No-Damage': np.float64(0.4487), 'Road': np.float64(0.0302), 'Tree': np.float64(0.6958)}

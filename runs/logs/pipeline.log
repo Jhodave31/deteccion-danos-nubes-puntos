@@ -1,0 +1,65 @@
+[2026-11-13 03:41] ===== comienza el guion maestro =====
+[2026-11-13 03:41] INICIO pn2_eval
+[2026-11-13 04:00] OK pn2_eval
+[2026-11-13 04:00] INICIO ptv3_s0
+[2026-11-13 04:22] ptv3_s0 descartado: evaluacion FP16 desbordada; corregido a BF16 y relanzado
+[2026-11-13 04:22] ===== comienza el guion maestro =====
+[2026-11-13 04:22] INICIO ptv3_s0
+[2026-11-13 05:09] OK ptv3_s0
+[2026-11-13 05:09] INICIO ptv3_s0_fullres
+[2026-11-13 05:24] OK ptv3_s0_fullres
+[2026-11-13 05:24] INICIO sonata_s0
+[2026-11-13 05:55] OK sonata_s0
+[2026-11-13 05:55] INICIO sonata_s0_fullres
+[2026-11-13 06:10] OK sonata_s0_fullres
+[2026-11-13 06:10] mejor modelo PTv3 en validación: sonata_small
+[2026-11-13 06:10] INICIO sonata_s1
+[2026-11-13 06:48] OK sonata_s1
+[2026-11-13 06:48] INICIO sonata_s1_fullres
+[2026-11-13 06:48] OK sonata_s1_fullres
+[2026-11-13 06:48] INICIO sonata_s2
+[2026-11-13 07:19] OK sonata_s2
+[2026-11-13 07:19] INICIO sonata_s2_fullres
+[2026-11-13 07:19] OK sonata_s2_fullres
+[2026-11-13 07:19] INICIO utonia_tiny_s0
+[2026-11-13 08:19] OK utonia_tiny_s0
+[2026-11-13 08:19] INICIO utonia_tiny_s0_fullres
+[2026-11-13 08:19] OK utonia_tiny_s0_fullres
+[2026-11-13 08:19] INICIO pn2_s1
+[2026-11-13 08:20] priorizando semillas de Utonia: se pausa el guion maestro
+[2026-11-13 08:20] INICIO utonia_tiny_s1
+[2026-11-13 09:50] OK utonia_tiny_s1
+[2026-11-13 09:50] INICIO utonia_tiny_s1_fullres
+[2026-11-13 09:51] OK utonia_tiny_s1_fullres
+[2026-11-13 09:51] INICIO utonia_tiny_s2
+[2026-11-13 10:58] OK utonia_tiny_s2
+[2026-11-13 10:58] INICIO utonia_tiny_s2_fullres
+[2026-11-13 10:58] OK utonia_tiny_s2_fullres
+[2026-11-13 10:58] retomando el guion maestro (semillas de PointNet++)
+[2026-11-13 10:58] ===== comienza el guion maestro =====
+[2026-11-13 10:58] YA EXISTE ptv3_s0
+[2026-11-13 10:58] YA EXISTE sonata_s0
+[2026-11-13 10:58] mejor modelo PTv3 en validación: sonata_small
+[2026-11-13 10:58] YA EXISTE sonata_s1
+[2026-11-13 10:58] YA EXISTE sonata_s2
+[2026-11-13 10:58] YA EXISTE utonia_tiny_s0
+[2026-11-13 10:58] INICIO pn2_s1
+[2026-11-13 13:38] OK pn2_s1
+[2026-11-13 13:38] INICIO pn2_s1_eval
+[2026-11-13 13:57] OK pn2_s1_eval
+[2026-11-13 13:57] INICIO pn2_s2
+[2026-11-13 14:22] pn2_s2 detenido a pedido del usuario para cerrar la entrega; se reporta PointNet++ con 2 semillas
+[2026-11-13 14:23] pn2_s2 relanzado (la detención anterior fue un malentendido)
+[2026-11-13 14:23] ===== comienza el guion maestro =====
+[2026-11-13 14:23] YA EXISTE ptv3_s0
+[2026-11-13 14:23] YA EXISTE sonata_s0
+[2026-11-13 14:23] mejor modelo PTv3 en validación: sonata_small
+[2026-11-13 14:23] YA EXISTE sonata_s1
+[2026-11-13 14:23] YA EXISTE sonata_s2
+[2026-11-13 14:23] YA EXISTE utonia_tiny_s0
+[2026-11-13 14:23] YA EXISTE pn2_s1
+[2026-11-13 14:23] INICIO pn2_s2
+[2026-11-13 16:00] OK pn2_s2
+[2026-11-13 16:00] INICIO pn2_s2_eval
+[2026-11-13 16:19] OK pn2_s2_eval
+[2026-11-13 16:19] ===== guion maestro terminado =====
